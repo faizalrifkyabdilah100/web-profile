@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /web-profile/
+    
+    # Redirect root request ke public folder (visible in URL bar)
+    RewriteCond %{REQUEST_URI} ^/web-profile/?$
+    RewriteRule ^(.*)$ public/ [R=301,L]
+    
+    # Jika request bukan file atau folder, redirect ke public folder
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [R=301,L]
+</IfModule>
