@@ -23,6 +23,7 @@ $navigation = [
     ['name' => 'Beranda', 'href' => base_url('/')],
     ['name' => 'Tentang', 'href' => base_url('tentang')],
     ['name' => 'Program', 'href' => base_url('program')],
+    ['name' => 'Data Guru', 'href' => base_url('guru')],
     ['name' => 'Galeri', 'href' => base_url('galeri')],
     ['name' => 'Kontak', 'href' => base_url('kontak')],
 ];
