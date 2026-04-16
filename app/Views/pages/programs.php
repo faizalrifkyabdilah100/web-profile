@@ -172,7 +172,7 @@ $facilities = [
                 <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Prestasi Terkini</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-                    Berbagai prestasi yang diraih siswa-siswi SMP Nusantara Jaya
+                    Berbagai prestasi yang diraih siswa-siswi SMP Negeri 2 Margoyoso
                 </p>
             </div>
 
@@ -229,10 +229,10 @@ $facilities = [
                 Tertarik dengan Program Kami?
             </h2>
             <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-                Hubungi kami untuk informasi lebih lanjut tentang program pendidikan di SMP Nusantara Jaya
+                Hubungi kami untuk informasi lebih lanjut tentang program pendidikan di SMP Negeri 2 Margoyoso
             </p>
-            <a href="tel:02112345678" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 hover:shadow-xl hover:-translate-y-1">
-                <i data-lucide="phone" class="w-5 h-5"></i>
+            <a href="mailto:smpn2margoyoso@gmail.com" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 hover:shadow-xl hover:-translate-y-1">
+                <i data-lucide="mail" class="w-5 h-5"></i>
                 Hubungi Kami Sekarang
             </a>
         </div>

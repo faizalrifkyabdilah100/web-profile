@@ -61,7 +61,7 @@ $galleryItems = [
         <div class="relative z-10 text-white px-4 max-w-4xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="text-4xl md:text-6xl mb-6 font-bold tracking-tight">Galeri</h1>
             <p class="text-xl text-blue-100 max-w-2xl mx-auto font-light leading-relaxed">
-                Dokumentasi kegiatan dan fasilitas SMP Nusantara Jaya
+                Dokumentasi kegiatan dan fasilitas SMP Negeri 2 Margoyoso
             </p>
         </div>
     </section>
@@ -141,7 +141,7 @@ $galleryItems = [
                 <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Video Profil</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-                    Lihat lebih dekat suasana dan kegiatan di SMP Nusantara Jaya
+                    Lihat lebih dekat suasana dan kegiatan di SMP Negeri 2 Margoyoso
                 </p>
             </div>
 

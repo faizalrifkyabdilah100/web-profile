@@ -7,19 +7,19 @@ $contactInfo = [
     [
         'icon' => 'map-pin',
         'title' => 'Alamat',
-        'content' => 'Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12345',
+        'content' => 'Jl. Tambak Buntu, Kec. Margoyoso, Kab. Pati, Prov. Jawa Tengah',
         'color' => 'bg-blue-100 text-blue-600',
     ],
     [
         'icon' => 'phone',
         'title' => 'Telepon',
-        'content' => "(021) 1234-5678 / 0812-3456-7890",
+        'content' => "Informasi lebih lanjut,\nsilakan datang ke sekolah",
         'color' => 'bg-green-100 text-green-600',
     ],
     [
         'icon' => 'mail',
         'title' => 'Email',
-        'content' => 'info@smpnusantarajaya.sch.id',
+        'content' => 'smpn2margoyoso@gmail.com',
         'color' => 'bg-purple-100 text-purple-600',
     ],
     [
@@ -180,14 +180,14 @@ $faqs = [
                             <div class="w-20 h-20 bg-blue-100 rounded-full mx-auto mb-6 flex justify-center items-center shadow-inner">
                                 <i data-lucide="map-pin" class="w-10 h-10 text-blue-600"></i>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">SMP Nusantara Jaya</h3>
-                            <p class="text-gray-600 mb-6">Pusat Pendidikan Terpadu</p>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">SMP Negeri 2 Margoyoso</h3>
+                            <p class="text-gray-600 mb-6">Kecamatan Margoyoso, Kab. Pati</p>
                             <p class="text-gray-800 font-medium leading-relaxed">
-                                Jl. Pendidikan No. 123<br />
-                                Jakarta Selatan<br />
-                                DKI Jakarta 12345
+                                Jl. Tambak Buntu<br />
+                                Kec. Margoyoso, Kab. Pati<br />
+                                Prov. Jawa Tengah
                             </p>
-                            <a href="#" class="mt-8 inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors">
+                            <a href="https://maps.google.com/?q=SMP+Negeri+2+Margoyoso" target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors">
                                 Buka di Google Maps
                                 <i data-lucide="external-link" class="w-4 h-4"></i>
                             </a>
@@ -225,9 +225,9 @@ $faqs = [
             <div class="mt-16 text-center" data-aos="zoom-in" data-aos-delay="400">
                 <div class="inline-block p-8 bg-blue-50 rounded-3xl border border-blue-100">
                     <p class="text-gray-800 text-lg font-medium mb-4">Masih ada pertanyaan lain?</p>
-                    <a href="tel:02112345678" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:-translate-y-1">
-                        <i data-lucide="phone-call" class="w-5 h-5"></i>
-                        Hubungi Kami di (021) 1234-5678
+                        <a href="mailto:smpn2margoyoso@gmail.com" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:-translate-y-1">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        Email: smpn2margoyoso@gmail.com
                     </a>
                 </div>
             </div>

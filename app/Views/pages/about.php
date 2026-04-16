@@ -3,45 +3,59 @@
 <?= $this->section('content') ?>
 
 <?php
+$identity = [
+    ['label' => 'NPSN', 'value' => '20338988'],
+    ['label' => 'Status', 'value' => 'Negeri'],
+    ['label' => 'Bentuk Pendidikan', 'value' => 'SMP'],
+    ['label' => 'Status Kepemilikan', 'value' => 'Pemerintah Daerah'],
+    ['label' => 'SK Pendirian', 'value' => '107/O/1997'],
+    ['label' => 'Tanggal SK Pendirian', 'value' => '17 Juli 1995'],
+    ['label' => 'SK Izin Operasional', 'value' => '420/05854'],
+    ['label' => 'Tanggal SK Izin Operasional', 'value' => '1 Januari 1910'],
+    ['label' => 'Alamat', 'value' => 'Jl. Tambak Buntu, Kec. Margoyoso, Kab. Pati, Prov. Jawa Tengah'],
+    ['label' => 'Jumlah Guru & Tenaga Pendidik', 'value' => '30 Orang'],
+];
+
+$misi = [
+    'Membangun kultur budaya sekolah berkarakter religius yang beriman dan bertaqwa kepada Tuhan YME.',
+    'Meningkatkan kualitas personal yang religius, maju, mandiri dan sejahtera serta berakhlak mulia.',
+    'Melaksanakan pembelajaran secara efektif dan efisien sehingga dapat mengembangkan potensi peserta didik secara optimal.',
+    'Meningkatkan keterampilan peserta didik dalam mengembangkan logika, praktika dan estetika serta kreatifitas sehingga dapat berkembang secara optimal.',
+    'Mendorong dan membantu warga sekolah untuk mengenali potensi dirinya serta meningkatkan kreatifitasnya.',
+    'Menumbuhkembangkan budaya bersih dan indah pada semua warga sekolah.',
+    'Mewujudkan kenyamanan lingkungan yang nyaman, aman dan menyenangkan dalam mendukung terciptanya proses pembelajaran.',
+];
+
+$tujuan = [
+    'Membentuk karakter siswa yang beriman dan bertaqwa kepada Tuhan YME.',
+    'Meningkatkan sikap sopan santun dan berbudi pekerti luhur sebagai cerminan akhlak mulia.',
+    'Menghasilkan lulusan yang berkualitas dan berdaya saing tinggi.',
+    'Meningkatkan prestasi akademik maupun non akademik peserta didik.',
+    'Meningkatkan dan menghasilkan hasil karya sebagai wujud implementasi profil pelajar pancasila.',
+    'Meningkatkan partisipasi warga sekolah dalam melestarikan lingkungan hidup.',
+    'Terciptanya kenyamanan lingkungan sekolah dalam menunjang proses pembelajaran yang optimal.',
+];
+
 $values = [
     [
-        'icon' => 'target',
-        'title' => 'Integritas',
-        'description' => 'Menjunjung tinggi kejujuran dan nilai-nilai moral dalam setiap aspek pendidikan',
+        'icon' => 'heart',
+        'title' => 'Religius',
+        'description' => 'Membangun karakter beriman dan bertaqwa kepada Tuhan YME dalam setiap aspek kehidupan sekolah',
     ],
     [
         'icon' => 'award',
-        'title' => 'Prestasi',
-        'description' => 'Mendorong siswa untuk mencapai prestasi akademik dan non-akademik terbaik',
+        'title' => 'Berprestasi',
+        'description' => 'Mendorong siswa untuk mencapai prestasi akademik dan non-akademik yang optimal',
     ],
     [
-        'icon' => 'users',
-        'title' => 'Kekeluargaan',
-        'description' => 'Membangun lingkungan sekolah yang harmonis dan saling mendukung',
+        'icon' => 'leaf',
+        'title' => 'Berwawasan Lingkungan',
+        'description' => 'Menumbuhkan budaya bersih, indah, dan peduli terhadap kelestarian lingkungan',
     ],
     [
-        'icon' => 'eye',
-        'title' => 'Inovasi',
-        'description' => 'Menerapkan metode pembelajaran modern dan inovatif untuk hasil optimal',
-    ],
-];
-
-$history = [
-    [
-        'year' => '2010',
-        'event' => 'Pendirian SMP Nusantara Jaya dengan 100 siswa angkatan pertama',
-    ],
-    [
-        'year' => '2015',
-        'event' => 'Meraih akreditasi A dan menjadi sekolah rujukan di wilayah Jakarta Selatan',
-    ],
-    [
-        'year' => '2020',
-        'event' => 'Peluncuran program pembelajaran digital dan fasilitas laboratorium modern',
-    ],
-    [
-        'year' => '2026',
-        'event' => 'Lebih dari 500 siswa aktif dengan 100+ prestasi di berbagai kompetisi',
+        'icon' => 'lightbulb',
+        'title' => 'Inovatif & Kreatif',
+        'description' => 'Mengembangkan logika, praktika, estetika, dan kreativitas peserta didik secara optimal',
     ],
 ];
 ?>
@@ -55,107 +69,145 @@ $history = [
         <div class="relative z-10 text-white px-4 max-w-4xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="text-4xl md:text-6xl mb-6 font-bold tracking-tight">Tentang Kami</h1>
             <p class="text-xl text-blue-100 max-w-2xl mx-auto font-light leading-relaxed">
-                Mengenal lebih dekat visi, misi, dan nilai-nilai luhur SMP Nusantara Jaya
+                Mengenal lebih dekat SMP Negeri 2 Margoyoso — visi, misi, dan komitmen kami untuk pendidikan berkualitas
             </p>
         </div>
     </section>
 
-    <!-- About Content -->
+    <!-- School Identity + Logo -->
     <section class="py-24 bg-white relative">
         <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+                <!-- Identity Card -->
                 <div data-aos="fade-right" data-aos-duration="1000">
-                    <h2 class="text-3xl md:text-4xl mb-6 font-bold text-gray-900">Profil Sekolah</h2>
+                    <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Identitas Sekolah</h2>
                     <div class="w-16 h-1 bg-blue-600 mb-8 rounded-full"></div>
-                    <div class="prose prose-lg text-gray-600 space-y-6">
-                        <p>
-                            SMP Nusantara Jaya adalah lembaga pendidikan menengah pertama yang berdiri sejak tahun 2010. 
-                            Kami berkomitmen untuk memberikan pendidikan berkualitas yang tidak hanya fokus pada aspek 
-                            akademik, tetapi juga pengembangan karakter dan soft skills siswa.
-                        </p>
-                        <p>
-                            Dengan tenaga pengajar yang profesional dan berpengalaman, fasilitas pembelajaran yang lengkap, 
-                            serta kurikulum yang terus dikembangkan sesuai dengan perkembangan zaman, kami siap membentuk 
-                            generasi muda Indonesia yang cerdas, berkarakter, dan siap menghadapi tantangan global.
-                        </p>
-                        <p>
-                            Lokasi strategis di Jakarta Selatan dengan lingkungan yang kondusif untuk belajar menjadikan 
-                            SMP Nusantara Jaya pilihan tepat untuk pendidikan putra-putri Anda.
-                        </p>
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                        <?php foreach ($identity as $index => $item): ?>
+                            <div class="flex items-start gap-4 px-6 py-4 <?= $index % 2 === 0 ? 'bg-white' : 'bg-slate-50' ?> hover:bg-blue-50 transition-colors duration-200">
+                                <span class="text-sm font-semibold text-gray-500 w-48 flex-shrink-0 pt-0.5"><?= $item['label'] ?></span>
+                                <span class="text-sm text-gray-900 font-medium leading-relaxed">: <?= $item['value'] ?></span>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-                <div class="relative" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="absolute inset-0 bg-blue-600 rounded-2xl transform translate-x-4 translate-y-4"></div>
-                    <div class="rounded-2xl overflow-hidden shadow-2xl relative bg-white z-10">
-                        <img src="https://images.unsplash.com/photo-1762088776943-28a9fbadcec4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBidWlsZGluZyUyMG1vZGVybiUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDkzODg4MHww&ixlib=rb-4.1.0&q=80&w=1080"
-                             alt="School Building" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" onerror="this.src='/fallback.jpg'">
+
+                <!-- Logo Placeholder & Deskripsi -->
+                <div data-aos="fade-left" data-aos-duration="1000" class="flex flex-col gap-8">
+                    <!-- Logo Placeholder -->
+                    <div class="flex flex-col items-center">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4 self-start">Logo Sekolah</h2>
+                        <div class="w-16 h-1 bg-blue-600 mb-6 rounded-full self-start"></div>
+                        <div class="w-52 h-52 rounded-full border-4 border-blue-200 shadow-2xl flex items-center justify-center bg-blue-50 overflow-hidden group hover:border-blue-400 transition-all duration-300">
+                            <img id="school-logo"
+                                 src="<?= base_url('logo-sekolah.png') ?>"
+                                 alt="Logo SMP Negeri 2 Margoyoso"
+                                 class="w-full h-full object-contain p-4"
+                                 onerror="this.style.display='none'; document.getElementById('logo-placeholder').style.display='flex';">
+                            <!-- Fallback jika logo belum ada -->
+                            <div id="logo-placeholder" class="flex-col items-center justify-center text-blue-400 text-center p-4" style="display:none;">
+                                <i data-lucide="image" class="w-16 h-16 mb-3 opacity-40"></i>
+                                <span class="text-xs text-gray-400 font-medium">Logo sekolah<br>akan tampil di sini</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deskripsi Singkat -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Profil Singkat</h3>
+                        <div class="prose text-gray-600 space-y-4 text-sm leading-relaxed">
+                            <p>
+                                SMP Negeri 2 Margoyoso adalah sekolah menengah pertama negeri yang berdiri sejak 17 Juli 1995 berdasarkan SK Pendirian Nomor 107/O/1997. Berlokasi di Jalan Tambak Buntu, Kecamatan Margoyoso, Kabupaten Pati, Provinsi Jawa Tengah.
+                            </p>
+                            <p>
+                                Dengan 30 guru dan tenaga pendidik yang berdedikasi, sekolah berkomitmen mewujudkan peserta didik yang beriman, berakhlak mulia, cerdas, terampil, kreatif, dan berwawasan lingkungan.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Vision & Mission -->
+    <!-- Visi -->
+    <section class="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10 text-center" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-white/20">
+                <i data-lucide="eye" class="w-10 h-10 text-blue-200"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Visi Sekolah</h2>
+            <div class="w-24 h-1 bg-blue-300 mx-auto mb-10 rounded-full"></div>
+            <blockquote class="text-xl md:text-2xl font-semibold leading-relaxed text-blue-50 italic max-w-4xl mx-auto border-l-4 border-blue-300 pl-8 text-left">
+                "TERWUJUDNYA PESERTA DIDIK YANG BERIMAN DAN BERTAQWA KEPADA TUHAN YME, BERAKHLAK MULIA, CERDAS, TERAMPIL, KREATIF DAN BERWAWASAN LINGKUNGAN"
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Misi -->
     <section class="py-24 bg-slate-50 relative overflow-hidden text-slate-800">
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
         <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-100/50 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
         
         <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="bg-white p-10 rounded-2xl shadow-xl hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden group" data-aos="fade-up">
-                    <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform duration-500 text-blue-600">
-                        <i data-lucide="eye" class="w-32 h-32"></i>
-                    </div>
-                    <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                        <i data-lucide="eye" class="w-10 h-10"></i>
-                    </div>
-                    <h2 class="text-3xl font-bold mb-6 text-gray-900">Visi</h2>
-                    <p class="text-gray-600 leading-relaxed text-lg relative z-10">
-                        Menjadi lembaga pendidikan menengah pertama terkemuka yang menghasilkan lulusan 
-                        berkualitas, berkarakter mulia, berprestasi, dan mampu bersaing di tingkat nasional 
-                        maupun internasional dengan tetap menjunjung tinggi nilai-nilai budaya Indonesia.
-                    </p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="target" class="w-8 h-8 text-white"></i>
                 </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Misi Sekolah</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
 
-                <div class="bg-white p-10 rounded-2xl shadow-xl hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform duration-500 text-blue-600">
-                        <i data-lucide="target" class="w-32 h-32"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <?php foreach ($misi as $index => $item): ?>
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-start gap-4 group" data-aos="fade-up" data-aos-delay="<?= $index * 80 ?>">
+                        <div class="flex-shrink-0 w-9 h-9 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-black text-sm group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <?= $index + 1 ?>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed text-sm"><?= $item ?></p>
                     </div>
-                    <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                        <i data-lucide="target" class="w-10 h-10"></i>
-                    </div>
-                    <h2 class="text-3xl font-bold mb-6 text-gray-900">Misi</h2>
-                    <ul class="space-y-4 text-gray-600 relative z-10 text-lg">
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm font-bold">1</div>
-                            <span>Menyelenggarakan pendidikan berkualitas dengan kurikulum yang relevan</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm font-bold">2</div>
-                            <span>Membentuk karakter siswa yang berakhlak mulia dan berjiwa Pancasila</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm font-bold">3</div>
-                            <span>Mengembangkan potensi akademik dan non-akademik siswa secara optimal</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm font-bold">4</div>
-                            <span>Menciptakan lingkungan belajar yang kondusif dan menyenangkan</span>
-                        </li>
-                    </ul>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
-    <!-- Values -->
-    <section class="py-32 bg-white relative">
+    <!-- Tujuan -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="flag" class="w-8 h-8 text-white"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tujuan Sekolah</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <?php foreach ($tujuan as $index => $item): ?>
+                    <div class="relative p-6 rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-indigo-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden" data-aos="fade-up" data-aos-delay="<?= $index * 80 ?>">
+                        <div class="absolute top-0 right-0 text-6xl font-black text-indigo-100 leading-none p-4 select-none group-hover:text-indigo-200 transition-colors"><?= $index + 1 ?></div>
+                        <div class="relative z-10">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 transition-colors duration-300">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-indigo-600 group-hover:text-white transition-colors duration-300"></i>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed text-sm font-medium"><?= $item ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nilai-Nilai -->
+    <section class="py-24 bg-slate-50 relative">
         <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Nilai-Nilai Kami</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-                    Prinsip-prinsip fundamental yang menjadi landasan dalam setiap kegiatan pendidikan di SMP Nusantara Jaya
+                    Prinsip-prinsip fundamental yang menjadi landasan dalam setiap kegiatan pendidikan di SMP Negeri 2 Margoyoso
                 </p>
             </div>
 
@@ -172,47 +224,5 @@ $history = [
             </div>
         </div>
     </section>
-
-    <!-- History Timeline -->
-    <section class="py-32 bg-slate-50 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-        
-        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Perjalanan Kami</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
-                <p class="text-gray-600 text-lg">
-                    Sejarah perkembangan SMP Nusantara Jaya dari tahun ke tahun
-                </p>
-            </div>
-
-            <div class="relative">
-                <!-- Timeline line -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200 hidden md:block"></div>
-
-                <div class="space-y-16">
-                    <?php foreach ($history as $index => $item): ?>
-                        <div class="relative flex flex-col md:flex-row items-center <?= $index % 2 === 0 ? '' : 'md:flex-row-reverse' ?>" data-aos="<?= $index % 2 === 0 ? 'fade-right' : 'fade-left' ?>">
-                            <div class="w-full md:w-1/2 <?= $index % 2 === 0 ? 'md:pr-16 md:text-right mb-8 md:mb-0' : 'md:pl-16 mb-8 md:mb-0' ?>">
-                                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow relative group">
-                                    <div class="absolute top-4 <?= $index % 2 === 0 ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2' ?> w-8 h-8 bg-blue-100 rotate-45 hidden md:block group-hover:bg-blue-200 transition-colors"></div>
-                                    <h3 class="text-4xl font-black text-blue-100 mb-2 leading-none"><?= $item['year'] ?></h3>
-                                    <p class="text-gray-700 text-lg font-medium relative z-10"><?= $item['event'] ?></p>
-                                </div>
-                            </div>
-
-                            <!-- Timeline dot -->
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white border-4 border-blue-600 rounded-full hidden md:flex items-center justify-center z-10 box-content shadow-lg">
-                                <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
-                            </div>
-
-                            <div class="w-full md:w-1/2"></div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
 <?= $this->endSection() ?>

@@ -27,10 +27,10 @@ $features = [
 ];
 
 $stats = [
-    ['number' => '500+', 'label' => 'Siswa Aktif'],
-    ['number' => '40+', 'label' => 'Tenaga Pendidik'],
-    ['number' => '15+', 'label' => 'Tahun Berpengalaman'],
-    ['number' => '100+', 'label' => 'Prestasi'],
+    ['number' => '30+', 'label' => 'Tenaga Pendidik'],
+    ['number' => '1995', 'label' => 'Tahun Berdiri'],
+    ['number' => 'A', 'label' => 'Akreditasi'],
+    ['number' => 'Negeri', 'label' => 'Status Sekolah'],
 ];
 
 $programs = [
@@ -63,10 +63,10 @@ $programs = [
         
         <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-6xl mb-6 font-bold tracking-tight" data-aos="fade-down" data-aos-delay="200">
-                Selamat Datang di SMP Nusantara Jaya
+                Selamat Datang di SMP Negeri 2 Margoyoso
             </h1>
             <p class="text-xl md:text-2xl mb-8 text-blue-100" data-aos="fade-up" data-aos-delay="400">
-                Membentuk Generasi Cerdas, Berkarakter, dan Berprestasi
+                Beriman, Berakhlak Mulia, Cerdas, Terampil, Kreatif dan Berwawasan Lingkungan
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="zoom-in" data-aos-delay="600">
                 <a href="<?= base_url('tentang') ?>" 
@@ -103,7 +103,7 @@ $programs = [
                 <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Mengapa Memilih Kami?</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-                    SMP Nusantara Jaya berkomitmen memberikan pendidikan terbaik dengan fasilitas lengkap dan tenaga pengajar profesional
+                    SMP Negeri 2 Margoyoso berkomitmen memberikan pendidikan terbaik dengan fasilitas lengkap dan tenaga pengajar profesional
                 </p>
             </div>
 
@@ -171,7 +171,7 @@ $programs = [
                 Daftarkan Putra-Putri Anda Sekarang!
             </h2>
             <p class="text-xl mb-10 text-blue-100 max-w-2xl mx-auto font-light">
-                Bergabunglah dengan keluarga besar SMP Nusantara Jaya dan raih masa depan gemilang bersama kami
+                Bergabunglah dengan keluarga besar SMP Negeri 2 Margoyoso dan raih masa depan gemilang bersama kami
             </p>
             <a href="<?= base_url('kontak') ?>" class="bg-white text-blue-900 hover:bg-gray-50 hover:shadow-2xl hover:-translate-y-1 transform px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                 Informasi Pendaftaran

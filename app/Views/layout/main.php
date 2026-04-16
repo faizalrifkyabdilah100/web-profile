@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMP Nusantara Jaya</title>
+    <title>SMP Negeri 2 Margoyoso</title>
+    <meta name="description" content="Website resmi SMP Negeri 2 Margoyoso - Terwujudnya Peserta Didik yang Beriman, Berakhlak Mulia, Cerdas, Terampil, Kreatif dan Berwawasan Lingkungan.">
     <!-- Tailwind CSS (via CDN for development mirroring React setup) -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <!-- Custom Theme CSS -->
@@ -41,12 +42,12 @@ function isActivePath($href, $currentUri) {
             <div class="flex h-16 justify-between items-center">
                 <!-- Logo -->
                 <a href="<?= base_url('/') ?>" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300">
-                        <i data-lucide="graduation-cap" class="w-6 h-6 text-white transform group-hover:scale-110 transition-transform duration-300"></i>
+                    <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                        <img src="<?= base_url('logo-sekolah.png') ?>" alt="Logo SMPN 2 Margoyoso" class="w-full h-full object-contain">
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">SMP Nusantara</span>
-                        <span class="text-xs text-gray-600">Jaya</span>
+                        <span class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">SMPN 2 Margoyoso</span>
+                        <span class="text-xs text-gray-600">Kab. Pati, Jawa Tengah</span>
                     </div>
                 </a>
 
@@ -93,16 +94,16 @@ function isActivePath($href, $currentUri) {
                 <!-- Brand & Desc -->
                 <div class="lg:col-span-1" data-aos="fade-up" data-aos-duration="800">
                     <div class="flex items-center gap-3 mb-6 group cursor-pointer">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-blue-500/20">
-                            <i data-lucide="graduation-cap" class="w-6 h-6 text-white"></i>
+                        <div class="w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-blue-500/20 bg-white/10">
+                            <img src="<?= base_url('logo-sekolah.png') ?>" alt="Logo SMPN 2 Margoyoso" class="w-full h-full object-contain p-1">
                         </div>
                         <div class="flex flex-col">
-                            <span class="font-bold text-xl text-white group-hover:text-blue-400 transition-colors duration-300 tracking-tight">SMP Nusantara</span>
-                            <span class="text-xs text-blue-400 font-medium tracking-widest uppercase">Jaya</span>
+                            <span class="font-bold text-xl text-white group-hover:text-blue-400 transition-colors duration-300 tracking-tight">SMPN 2 Margoyoso</span>
+                            <span class="text-xs text-blue-400 font-medium tracking-widest uppercase">Kab. Pati, Jawa Tengah</span>
                         </div>
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Membentuk generasi cerdas, berkarakter, dan berprestasi untuk masa depan Indonesia yang gemilang melalui pendidikan berkualitas internasional.
+                        Terwujudnya peserta didik yang beriman, bertaqwa, berakhlak mulia, cerdas, terampil, kreatif dan berwawasan lingkungan.
                     </p>
                     <div class="flex gap-4">
                         <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 hover:scale-110">
@@ -140,19 +141,19 @@ function isActivePath($href, $currentUri) {
                             <div class="mt-1 w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/20 group-hover:text-blue-500 transition-colors">
                                 <i data-lucide="map-pin" class="w-4 h-4"></i>
                             </div>
-                            <span class="text-sm leading-relaxed">Jl. Pendidikan No. 123<br>Jakarta Selatan, 12345</span>
+                            <span class="text-sm leading-relaxed">Jl. Tambak Buntu, Kec. Margoyoso<br>Kab. Pati, Jawa Tengah</span>
                         </li>
                         <li class="flex items-center gap-4 hover:text-white transition-colors duration-300 group">
                             <div class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0 group-hover:bg-green-600/20 group-hover:text-green-500 transition-colors">
                                 <i data-lucide="phone" class="w-4 h-4"></i>
                             </div>
-                            <a href="tel:02112345678" class="text-sm">(021) 1234-5678</a>
+                            <a href="tel:" class="text-sm">-</a>
                         </li>
                         <li class="flex items-center gap-4 hover:text-white transition-colors duration-300 group">
                             <div class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600/20 group-hover:text-red-500 transition-colors">
                                 <i data-lucide="mail" class="w-4 h-4"></i>
                             </div>
-                            <a href="mailto:info@smpnusantarajaya.sch.id" class="text-sm break-all">info@smpnusantarajaya.sch.id</a>
+                            <a href="mailto:smpn2margoyoso@gmail.com" class="text-sm break-all">smpn2margoyoso@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -172,7 +173,7 @@ function isActivePath($href, $currentUri) {
             </div>
 
             <div class="mt-16 pt-8 border-t border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-slate-500 text-sm">&copy; 2026 SMP Nusantara Jaya. All rights reserved.</p>
+                <p class="text-slate-500 text-sm">&copy; 2026 SMP Negeri 2 Margoyoso. All rights reserved.</p>
                 <div class="flex gap-6 text-sm font-medium">
                     <a href="#" class="text-slate-500 hover:text-white transition-colors">Kebijakan Privasi</a>
                     <a href="#" class="text-slate-500 hover:text-white transition-colors">Syarat & Ketentuan</a>
