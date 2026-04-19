@@ -50,36 +50,6 @@ $extracurricular = [
         'color' => 'bg-green-100 text-green-600',
     ],
 ];
-
-$achievements = [
-    [
-        'title' => 'Juara 1 Olimpiade Matematika Tingkat Nasional',
-        'year' => '2025',
-    ],
-    [
-        'title' => 'Juara 2 Lomba Robotika Se-Jakarta',
-        'year' => '2025',
-    ],
-    [
-        'title' => 'Juara 1 Kompetisi Debat Bahasa Inggris',
-        'year' => '2024',
-    ],
-    [
-        'title' => 'Juara 3 Festival Seni Budaya Nasional',
-        'year' => '2024',
-    ],
-];
-
-$facilities = [
-    'Laboratorium IPA Modern',
-    'Laboratorium Komputer',
-    'Perpustakaan Digital',
-    'Ruang Multimedia',
-    'Lapangan Olahraga',
-    'Studio Musik',
-    'Aula Serbaguna',
-    'Masjid',
-];
 ?>
 
 <div>
@@ -165,75 +135,21 @@ $facilities = [
         </div>
     </section>
 
-    <!-- Achievements -->
-    <section class="py-24 bg-white relative">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Prestasi Terkini</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-                    Berbagai prestasi yang diraih siswa-siswi SMP Negeri 2 Margoyoso
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                <?php foreach ($achievements as $index => $achievement): ?>
-                    <div class="bg-gradient-to-r from-blue-50 to-white p-8 rounded-2xl border-l-4 border-blue-600 shadow-md hover:shadow-lg transition-shadow group" data-aos="fade-up" data-aos-delay="<?= $index * 100 ?>">
-                        <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                                <i data-lucide="trophy" class="w-8 h-8"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2 text-gray-900"><?= $achievement['title'] ?></h3>
-                                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-blue-600 text-sm font-bold shadow-sm border border-blue-100">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <?= $achievement['year'] ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- Facilities -->
-    <section class="py-24 bg-blue-600 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl mb-4 font-bold">Fasilitas Lengkap</h2>
-                <div class="w-24 h-1 bg-white/50 mx-auto mb-6 rounded-full"></div>
-                <p class="text-blue-100 max-w-2xl mx-auto text-lg">
-                    Sarana dan prasarana yang mendukung kegiatan belajar mengajar yang optimal
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <?php foreach ($facilities as $index => $facility): ?>
-                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
-                        <p class="font-medium text-lg"><?= $facility ?></p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA Section -->
     <section class="py-24 bg-gray-50">
         <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
             <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8">
-                <i data-lucide="phone-call" class="w-10 h-10 text-blue-600"></i>
+                <i data-lucide="info" class="w-10 h-10 text-blue-600"></i>
             </div>
             <h2 class="text-3xl md:text-4xl mb-6 font-bold text-gray-900">
                 Tertarik dengan Program Kami?
             </h2>
             <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-                Hubungi kami untuk informasi lebih lanjut tentang program pendidikan di SMP Negeri 2 Margoyoso
+                Pelajari lebih lanjut tentang SMP Negeri 2 Margoyoso dan program pendidikan kami
             </p>
-            <a href="mailto:smpn2margoyoso@gmail.com" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 hover:shadow-xl hover:-translate-y-1">
-                <i data-lucide="mail" class="w-5 h-5"></i>
-                Hubungi Kami Sekarang
+            <a href="<?= base_url('tentang') ?>" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 hover:shadow-xl hover:-translate-y-1">
+                <i data-lucide="school" class="w-5 h-5"></i>
+                Tentang Sekolah Kami
             </a>
         </div>
     </section>

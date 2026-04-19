@@ -50,6 +50,36 @@ $programs = [
         'image' => 'https://images.unsplash.com/photo-1632217138608-66217da0142f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBsaWJyYXJ5JTIwYm9va3N8ZW58MXx8fHwxNzc0OTE1ODY5fDA&ixlib=rb-4.1.0&q=80&w=1080',
     ],
 ];
+
+$achievements = [
+    [
+        'title' => 'Juara 1 Olimpiade Matematika Tingkat Nasional',
+        'year' => '2025',
+    ],
+    [
+        'title' => 'Juara 2 Lomba Robotika Se-Jakarta',
+        'year' => '2025',
+    ],
+    [
+        'title' => 'Juara 1 Kompetisi Debat Bahasa Inggris',
+        'year' => '2024',
+    ],
+    [
+        'title' => 'Juara 3 Festival Seni Budaya Nasional',
+        'year' => '2024',
+    ],
+];
+
+$facilities = [
+    'Laboratorium IPA Modern',
+    'Laboratorium Komputer',
+    'Perpustakaan Digital',
+    'Ruang Multimedia',
+    'Lapangan Olahraga',
+    'Studio Musik',
+    'Aula Serbaguna',
+    'Masjid',
+];
 ?>
 
 <div>
@@ -74,9 +104,9 @@ $programs = [
                     Tentang Kami
                     <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
-                <a href="<?= base_url('kontak') ?>" 
+                <a href="<?= base_url('program') ?>" 
                    class="bg-white hover:bg-gray-100 text-blue-900 px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    Hubungi Kami
+                    Lihat Program
                 </a>
             </div>
         </div>
@@ -156,6 +186,69 @@ $programs = [
                     </div>
                 <?php endforeach; ?>
             </div>
+
+            <!-- Tombol Lihat Semua Program -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="300">
+                <a href="<?= base_url('program') ?>" 
+                   class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg hover:-translate-y-1">
+                    Lihat Semua Program
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prestasi Terkini Section -->
+    <section class="py-24 bg-white relative">
+        <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl mb-4 font-bold text-gray-900">Prestasi Terkini</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Berbagai prestasi yang diraih siswa-siswi SMP Negeri 2 Margoyoso
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <?php foreach ($achievements as $index => $achievement): ?>
+                    <div class="bg-gradient-to-r from-blue-50 to-white p-8 rounded-2xl border-l-4 border-blue-600 shadow-md hover:shadow-lg transition-shadow group" data-aos="fade-up" data-aos-delay="<?= $index * 100 ?>">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                                <i data-lucide="trophy" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900"><?= $achievement['title'] ?></h3>
+                                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-blue-600 text-sm font-bold shadow-sm border border-blue-100">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <?= $achievement['year'] ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fasilitas Lengkap Section -->
+    <section class="py-24 bg-blue-600 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl mb-4 font-bold">Fasilitas Lengkap</h2>
+                <div class="w-24 h-1 bg-white/50 mx-auto mb-6 rounded-full"></div>
+                <p class="text-blue-100 max-w-2xl mx-auto text-lg">
+                    Sarana dan prasarana yang mendukung kegiatan belajar mengajar yang optimal
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <?php foreach ($facilities as $index => $facility): ?>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
+                        <p class="font-medium text-lg"><?= $facility ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </section>
 
@@ -173,7 +266,7 @@ $programs = [
             <p class="text-xl mb-10 text-blue-100 max-w-2xl mx-auto font-light">
                 Bergabunglah dengan keluarga besar SMP Negeri 2 Margoyoso dan raih masa depan gemilang bersama kami
             </p>
-            <a href="<?= base_url('kontak') ?>" class="bg-white text-blue-900 hover:bg-gray-50 hover:shadow-2xl hover:-translate-y-1 transform px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            <a href="<?= base_url('tentang') ?>" class="bg-white text-blue-900 hover:bg-gray-50 hover:shadow-2xl hover:-translate-y-1 transform px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                 Informasi Pendaftaran
                 <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>

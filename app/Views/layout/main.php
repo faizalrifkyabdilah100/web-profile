@@ -23,9 +23,14 @@ $navigation = [
     ['name' => 'Beranda', 'href' => base_url('/')],
     ['name' => 'Tentang', 'href' => base_url('tentang')],
     ['name' => 'Program', 'href' => base_url('program')],
-    ['name' => 'Data Guru', 'href' => base_url('guru')],
-    ['name' => 'Galeri', 'href' => base_url('galeri')],
-    ['name' => 'Kontak', 'href' => base_url('kontak')],
+    [
+        'name' => 'Data',
+        'dropdown' => true,
+        'children' => [
+            ['name' => 'Data Guru', 'href' => base_url('guru')],
+            ['name' => 'Mata Pelajaran', 'href' => base_url('mata-pelajaran')],
+        ],
+    ],
 ];
 
 // Helper to determine active state
@@ -34,6 +39,16 @@ function isActivePath($href, $currentUri) {
     $path = trim($path, '/');
     $currentUri = trim($currentUri, '/');
     return $path === $currentUri;
+}
+
+// Helper to check if any child in dropdown is active
+function isDropdownActive($children, $currentUri) {
+    foreach ($children as $child) {
+        if (isActivePath($child['href'], $currentUri)) {
+            return true;
+        }
+    }
+    return false;
 }
 ?>
 
@@ -53,13 +68,57 @@ function isActivePath($href, $currentUri) {
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex gap-8">
+                <div class="hidden md:flex gap-6 items-center">
                     <?php foreach ($navigation as $item): ?>
-                        <a href="<?= $item['href'] ?>"
-                           class="px-3 py-2 rounded-md transition-all duration-300 hover:scale-105 <?= isActivePath($item['href'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50' ?>">
-                            <?= $item['name'] ?>
-                        </a>
+                        <?php if (!empty($item['dropdown'])): ?>
+                            <!-- Dropdown Menu -->
+                            <div class="relative group/dropdown">
+                                <button type="button"
+                                   class="px-3 py-2 rounded-md transition-all duration-300 hover:scale-105 inline-flex items-center gap-1 <?= isDropdownActive($item['children'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50' ?>">
+                                    <?= $item['name'] ?>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300 group-hover/dropdown:rotate-180"></i>
+                                </button>
+                                <!-- Dropdown Panel -->
+                                <div class="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-2 group-hover/dropdown:translate-y-0 z-50">
+                                    <?php foreach ($item['children'] as $child): ?>
+                                        <a href="<?= $child['href'] ?>"
+                                           class="block px-4 py-2.5 text-sm transition-colors duration-200 <?= isActivePath($child['href'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' ?>">
+                                            <?= $child['name'] ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <a href="<?= $item['href'] ?>"
+                               class="px-3 py-2 rounded-md transition-all duration-300 hover:scale-105 <?= isActivePath($item['href'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50' ?>">
+                                <?= $item['name'] ?>
+                            </a>
+                        <?php endif; ?>
                     <?php endforeach; ?>
+
+                    <!-- Auth Icon (Tersamarkan) -->
+                    <?php if (session()->get('logged_in')): ?>
+                        <div class="relative group/user ml-2 pl-4 border-l border-gray-200">
+                            <button type="button" class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors border border-blue-100 shadow-sm" title="Profil Anda">
+                                <i data-lucide="user" class="w-4 h-4"></i>
+                            </button>
+                            <!-- Dropdown User -->
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover/user:opacity-100 group-hover/user:visible transition-all duration-300 z-50 translate-y-2 group-hover/user:translate-y-0">
+                                <div class="px-4 py-3 border-b border-gray-50 mb-1">
+                                    <p class="text-sm font-bold text-gray-900 truncate"><?= esc(session()->get('nama')) ?></p>
+                                    <p class="text-xs text-blue-600 font-medium mt-0.5 capitalize"><?= str_replace('_', ' ', session()->get('role')) ?></p>
+                                </div>
+                                <a href="<?= base_url('auth/logout') ?>" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 font-medium transition-colors flex items-center gap-2">
+                                    <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <!-- Login Rahasia (Icon) -->
+                        <a href="<?= base_url('auth/login') ?>" class="ml-2 pl-4 border-l border-gray-200 text-gray-300 hover:text-blue-600 transition-colors duration-300" title="Sign In" aria-label="Sign In">
+                            <i data-lucide="log-in" class="w-5 h-5"></i>
+                        </a>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Mobile menu button -->
@@ -71,10 +130,45 @@ function isActivePath($href, $currentUri) {
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden py-4 border-t transition-all duration-300 ease-in-out opacity-0 translate-y-[-10px]">
                 <?php foreach ($navigation as $item): ?>
-                    <a href="<?= $item['href'] ?>" class="block px-3 py-2 rounded-md mb-1 transition-colors duration-300 <?= isActivePath($item['href'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:bg-gray-50' ?>">
-                        <?= $item['name'] ?>
-                    </a>
+                    <?php if (!empty($item['dropdown'])): ?>
+                        <!-- Mobile Dropdown -->
+                        <div class="mb-1">
+                            <button type="button" onclick="toggleMobileDropdown(this)"
+                                    class="w-full flex items-center justify-between px-3 py-2 rounded-md transition-colors duration-300 <?= isDropdownActive($item['children'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:bg-gray-50' ?>">
+                                <span><?= $item['name'] ?></span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300 mobile-dropdown-icon"></i>
+                            </button>
+                            <div class="hidden mobile-dropdown-content ml-4 mt-1 border-l-2 border-blue-200 pl-3">
+                                <?php foreach ($item['children'] as $child): ?>
+                                    <a href="<?= $child['href'] ?>" class="block px-3 py-2 rounded-md mb-1 text-sm transition-colors duration-300 <?= isActivePath($child['href'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-600 hover:bg-gray-50' ?>">
+                                        <?= $child['name'] ?>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <a href="<?= $item['href'] ?>" class="block px-3 py-2 rounded-md mb-1 transition-colors duration-300 <?= isActivePath($item['href'], $uri) ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:bg-gray-50' ?>">
+                            <?= $item['name'] ?>
+                        </a>
+                    <?php endif; ?>
                 <?php endforeach; ?>
+
+                <!-- Mobile Auth -->
+                <div class="mt-4 pt-4 border-t border-gray-100">
+                    <?php if (session()->get('logged_in')): ?>
+                        <div class="px-3 mb-2">
+                            <p class="text-sm font-bold text-gray-900"><?= esc(session()->get('nama')) ?></p>
+                            <p class="text-xs text-blue-600 capitalize"><?= str_replace('_', ' ', session()->get('role')) ?></p>
+                        </div>
+                        <a href="<?= base_url('auth/logout') ?>" class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors duration-300 text-red-600 hover:bg-red-50 font-medium">
+                            <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+                        </a>
+                    <?php else: ?>
+                        <a href="<?= base_url('auth/login') ?>" class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors duration-300 text-gray-500 hover:text-blue-600 hover:bg-blue-50">
+                            <i data-lucide="log-in" class="w-4 h-4"></i> Sign In
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
         </nav>
     </header>
@@ -124,12 +218,23 @@ function isActivePath($href, $currentUri) {
                     <h3 class="font-bold text-white mb-6 text-lg">Navigasi</h3>
                     <ul class="space-y-4">
                         <?php foreach ($navigation as $item): ?>
-                            <li>
-                                <a href="<?= $item['href'] ?>" class="text-slate-400 hover:text-blue-400 flex items-center gap-2 transition-all duration-300 group">
-                                    <div class="w-1 h-1 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    <span class="transform group-hover:translate-x-2 transition-transform duration-300"><?= $item['name'] ?></span>
-                                </a>
-                            </li>
+                            <?php if (!empty($item['dropdown'])): ?>
+                                <?php foreach ($item['children'] as $child): ?>
+                                    <li>
+                                        <a href="<?= $child['href'] ?>" class="text-slate-400 hover:text-blue-400 flex items-center gap-2 transition-all duration-300 group">
+                                            <div class="w-1 h-1 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                            <span class="transform group-hover:translate-x-2 transition-transform duration-300"><?= $child['name'] ?></span>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <li>
+                                    <a href="<?= $item['href'] ?>" class="text-slate-400 hover:text-blue-400 flex items-center gap-2 transition-all duration-300 group">
+                                        <div class="w-1 h-1 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <span class="transform group-hover:translate-x-2 transition-transform duration-300"><?= $item['name'] ?></span>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -227,6 +332,20 @@ function isActivePath($href, $currentUri) {
             // Re-render the specific icon
             lucide.createIcons();
         });
+
+        // Mobile dropdown toggle
+        function toggleMobileDropdown(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.mobile-dropdown-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
     </script>
 </body>
 </html>

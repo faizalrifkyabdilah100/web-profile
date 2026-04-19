@@ -8,13 +8,28 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/',        'Pages::index');
 $routes->get('/tentang', 'Pages::about');
 $routes->get('/program', 'Pages::programs');
-$routes->get('/galeri',  'Pages::gallery');
-$routes->get('/kontak',  'Pages::contact');
 
-// CRUD Data Guru
-$routes->get('/guru',              'Guru::index');
-$routes->get('/guru/create',      'Guru::create');
-$routes->post('/guru/store',      'Guru::store');
-$routes->get('/guru/edit/(:num)', 'Guru::edit/$1');
-$routes->post('/guru/update/(:num)', 'Guru::update/$1');
-$routes->get('/guru/delete/(:num)', 'Guru::delete/$1');
+// Auth Routes
+$routes->get('/auth/login', 'Auth::login');
+$routes->post('/auth/authenticate', 'Auth::authenticate');
+$routes->get('/auth/logout', 'Auth::logout');
+
+// CRUD Data Guru (Hanya Super Admin)
+$routes->get('/guru', 'Guru::index');
+$routes->group('', ['filter' => 'auth:super_admin'], function($routes) {
+    $routes->get('/guru/create', 'Guru::create');
+    $routes->post('/guru/store', 'Guru::store');
+    $routes->get('/guru/edit/(:num)', 'Guru::edit/$1');
+    $routes->post('/guru/update/(:num)', 'Guru::update/$1');
+    $routes->get('/guru/delete/(:num)', 'Guru::delete/$1');
+});
+
+// CRUD Data Mata Pelajaran (Super Admin & Guru)
+$routes->get('/mata-pelajaran', 'MataPelajaran::index');
+$routes->group('', ['filter' => 'auth:super_admin,guru'], function($routes) {
+    $routes->get('/mata-pelajaran/create', 'MataPelajaran::create');
+    $routes->post('/mata-pelajaran/store', 'MataPelajaran::store');
+    $routes->get('/mata-pelajaran/edit/(:num)', 'MataPelajaran::edit/$1');
+    $routes->post('/mata-pelajaran/update/(:num)', 'MataPelajaran::update/$1');
+    $routes->get('/mata-pelajaran/delete/(:num)', 'MataPelajaran::delete/$1');
+});

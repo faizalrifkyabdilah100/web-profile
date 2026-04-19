@@ -19,13 +19,4 @@ class Pages extends BaseController
         return view('pages/programs');
     }
 
-    public function gallery()
-    {
-        return view('pages/gallery');
-    }
-
-    public function contact()
-    {
-        return view('pages/contact');
-    }
 }
