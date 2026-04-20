@@ -14,6 +14,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- jQuery & Summernote (for Rich Text Editor) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body class="bg-background text-foreground min-h-screen flex flex-col">
 
@@ -32,6 +37,12 @@ $navigation = [
         ],
     ],
 ];
+
+// Tambahkan Manajemen Konten hanya untuk super_admin
+if (session()->get('role') === 'super_admin') {
+    $navigation[3]['children'][] = ['name' => 'Setting Tentang', 'href' => base_url('tentang-admin')];
+    $navigation[3]['children'][] = ['name' => 'Konten Ekstra', 'href' => base_url('halaman-dinamis')];
+}
 
 // Helper to determine active state
 function isActivePath($href, $currentUri) {

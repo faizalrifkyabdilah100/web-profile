@@ -22,6 +22,24 @@ $routes->group('', ['filter' => 'auth:super_admin'], function($routes) {
     $routes->get('/guru/edit/(:num)', 'Guru::edit/$1');
     $routes->post('/guru/update/(:num)', 'Guru::update/$1');
     $routes->get('/guru/delete/(:num)', 'Guru::delete/$1');
+
+    // CRUD Halaman Tentang
+    $routes->get('/tentang-admin', 'TentangAdmin::index');
+    $routes->post('/tentang-admin/update_utama', 'TentangAdmin::update_utama');
+    $routes->post('/tentang-admin/update_logo', 'TentangAdmin::update_logo');
+    $routes->get('/tentang-admin/create-item/(:segment)', 'TentangAdmin::create_item/$1');
+    $routes->post('/tentang-admin/store-item/(:segment)', 'TentangAdmin::store_item/$1');
+    $routes->get('/tentang-admin/edit-item/(:num)', 'TentangAdmin::edit_item/$1');
+    $routes->post('/tentang-admin/update-item/(:num)', 'TentangAdmin::update_item/$1');
+    $routes->get('/tentang-admin/delete-item/(:num)', 'TentangAdmin::delete_item/$1');
+    
+    // CRUD Halaman Dinamis
+    $routes->get('/halaman-dinamis', 'HalamanDinamis::index');
+    $routes->get('/halaman-dinamis/create', 'HalamanDinamis::create');
+    $routes->post('/halaman-dinamis/store', 'HalamanDinamis::store');
+    $routes->get('/halaman-dinamis/edit/(:num)', 'HalamanDinamis::edit/$1');
+    $routes->post('/halaman-dinamis/update/(:num)', 'HalamanDinamis::update/$1');
+    $routes->get('/halaman-dinamis/delete/(:num)', 'HalamanDinamis::delete/$1');
 });
 
 // CRUD Data Mata Pelajaran (Super Admin & Guru)
