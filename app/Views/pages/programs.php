@@ -2,57 +2,37 @@
 
 <?= $this->section('content') ?>
 
-<?php
-$academicPrograms = [
-    [
-        'icon' => 'book-open',
-        'title' => 'Matematika & IPA',
-        'description' => 'Program pembelajaran Matematika dan IPA dengan pendekatan problem solving dan eksperimen praktis',
-        'image' => 'https://images.unsplash.com/photo-1605781645799-c9c7d820b4ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHNjaWVuY2UlMjBsYWJvcmF0b3J5fGVufDF8fHx8MTc3NDkzODg4MXww&ixlib=rb-4.1.0&q=80&w=1080',
-    ],
-    [
-        'icon' => 'globe',
-        'title' => 'Bahasa & Sosial',
-        'description' => 'Penguasaan Bahasa Indonesia, Inggris, dan ilmu sosial untuk wawasan luas',
-        'image' => 'https://images.unsplash.com/photo-1632217138608-66217da0142f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBsaWJyYXJ5JTIwYm9va3N8ZW58MXx8fHwxNzc0OTE1ODY5fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    ],
-    [
-        'icon' => 'code',
-        'title' => 'Teknologi & Komputer',
-        'description' => 'Pembelajaran coding, robotika, dan literasi digital untuk masa depan',
-        'image' => 'https://images.unsplash.com/photo-1771408427146-09be9a1d4535?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMGNvbXB1dGVyJTIwY2xhc3N8ZW58MXx8fHwxNzc0OTM4ODgyfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    ],
-];
 
-$extracurricular = [
-    [
-        'icon' => 'trophy',
-        'category' => 'Olahraga',
-        'activities' => ['Basket', 'Futsal', 'Voli', 'Bulu Tangkis', 'Renang', 'Taekwondo'],
-        'color' => 'bg-red-100 text-red-600',
-    ],
-    [
-        'icon' => 'palette',
-        'category' => 'Seni & Budaya',
-        'activities' => ['Tari Tradisional', 'Paduan Suara', 'Band', 'Melukis', 'Teater'],
-        'color' => 'bg-purple-100 text-purple-600',
-    ],
-    [
-        'icon' => 'beaker',
-        'category' => 'Sains & Teknologi',
-        'activities' => ['Robotika', 'Coding Club', 'KIR', 'English Club'],
-        'color' => 'bg-blue-100 text-blue-600',
-    ],
-    [
-        'icon' => 'heart',
-        'category' => 'Kepemimpinan',
-        'activities' => ['OSIS', 'Pramuka', 'PMR', 'Paskibra'],
-        'color' => 'bg-green-100 text-green-600',
-    ],
-];
-?>
 
 <div>
+    <!-- Flash Message -->
+    <?php if (session()->getFlashdata('pesan')): ?>
+        <div id="flash-message" class="fixed top-24 right-8 z-[100] max-w-sm w-full bg-white rounded-2xl shadow-2xl border-l-4 border-<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'green' : 'red' ?>-500 p-4 transform transition-all duration-500 translate-x-full">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'green' : 'red' ?>-50 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'check-circle' : 'alert-circle' ?>" class="w-5 h-5 text-<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'green' : 'red' ?>-500"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900"><?= session()->getFlashdata('pesan')['type'] == 'success' ? 'Berhasil!' : 'Gagal!' ?></h4>
+                    <p class="text-sm text-gray-600 mt-1"><?= session()->getFlashdata('pesan')['message'] ?></p>
+                </div>
+                <button onclick="closeFlash()" class="ml-auto text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                setTimeout(() => { document.getElementById('flash-message').classList.remove('translate-x-full'); }, 100);
+                setTimeout(() => { closeFlash(); }, 5000);
+            });
+            function closeFlash() {
+                const el = document.getElementById('flash-message');
+                if(el) { el.classList.add('translate-x-full'); setTimeout(() => el.remove(), 500); }
+            }
+        </script>
+    <?php endif; ?>
+
     <!-- Hero Section -->
     <section class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden text-center">
         <!-- Abstract glowing orbs -->
@@ -79,23 +59,49 @@ $extracurricular = [
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <?php foreach ($academicPrograms as $index => $program): ?>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2" data-aos="fade-up" data-aos-delay="<?= $index * 150 ?>">
+                <?php foreach ($akademik as $index => $program): 
+                    $parts = explode(';', $program['gambar_icon']);
+                    $img = $parts[0] ?? '';
+                    $icon = $parts[1] ?? 'book-open';
+                ?>
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group/akademik hover:-translate-y-2 relative" data-aos="fade-up" data-aos-delay="<?= $index * 150 ?>">
+                        <?php if($isAdmin): ?>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover/akademik:opacity-100 flex gap-2 z-30 transition-opacity">
+                            <a href="<?= base_url('admin-konten/edit-item/'.$program['id']) ?>" class="bg-white text-indigo-600 shadow-md p-2 rounded-xl hover:bg-indigo-600 hover:text-white transition-colors">
+                                <i data-lucide="pencil" class="w-4 h-4"></i>
+                            </a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$program['id']) ?>" onclick="return confirm('Hapus program akademik?')" class="bg-white text-red-600 shadow-md p-2 rounded-xl hover:bg-red-600 hover:text-white transition-colors">
+                                <i data-lucide="trash" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+
                         <div class="h-56 overflow-hidden relative">
-                            <img src="<?= $program['image'] ?>" alt="<?= $program['title'] ?>" 
-                                 class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                            <?php $src = str_starts_with($img, 'http') ? $img : base_url($img); ?>
+                            <img src="<?= esc($src) ?>" alt="<?= esc($program['judul']) ?>" 
+                                 class="w-full h-full object-cover transform transition-transform duration-700 group-hover/akademik:scale-110"
                                  onerror="this.src='/fallback.jpg'">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/akademik:opacity-100 transition-opacity duration-300"></div>
                         </div>
                         <div class="p-8">
-                            <div class="w-16 h-16 bg-blue-50 group-hover:bg-blue-600 transition-colors duration-300 rounded-2xl flex items-center justify-center mb-6 -mt-16 relative z-10 shadow-lg rotate-3 group-hover:rotate-0">
-                                <i data-lucide="<?= $program['icon'] ?>" class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300"></i>
+                            <div class="w-16 h-16 bg-blue-50 group-hover/akademik:bg-blue-600 transition-colors duration-300 rounded-2xl flex items-center justify-center mb-6 -mt-16 relative z-10 shadow-lg rotate-3 group-hover/akademik:rotate-0">
+                                <i data-lucide="<?= esc($icon) ?>" class="w-8 h-8 text-blue-600 group-hover/akademik:text-white transition-colors duration-300"></i>
                             </div>
-                            <h3 class="text-xl mb-3 font-bold text-gray-900"><?= $program['title'] ?></h3>
-                            <p class="text-gray-600 leading-relaxed"><?= $program['description'] ?></p>
+                            <h3 class="text-xl mb-3 font-bold text-gray-900"><?= esc($program['judul']) ?></h3>
+                            <p class="text-gray-600 leading-relaxed"><?= nl2br(esc($program['konten'])) ?></p>
                         </div>
                     </div>
                 <?php endforeach; ?>
+                
+                <?php if($isAdmin): ?>
+                    <!-- Form Tambahan Khusus Akademik -->
+                    <a href="<?= base_url('admin-konten/create-item/program/akademik') ?>" class="bg-white rounded-2xl overflow-hidden border-2 border-dashed border-gray-300 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 group flex flex-col justify-center items-center py-16 shadow-lg min-h-[350px]">
+                        <div class="w-20 h-20 bg-gray-100 group-hover:bg-blue-100 transition-colors duration-300 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="plus" class="w-10 h-10 text-gray-400 group-hover:text-blue-600 transition-colors duration-300"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-400 group-hover:text-blue-600">Tambah Program</h3>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -115,22 +121,49 @@ $extracurricular = [
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <?php foreach ($extracurricular as $index => $item): ?>
-                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group" data-aos="zoom-in" data-aos-delay="<?= $index * 100 ?>">
-                        <div class="w-16 h-16 <?= $item['color'] ?> rounded-2xl flex items-center justify-center mb-6 rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                            <i data-lucide="<?= $item['icon'] ?>" class="w-8 h-8"></i>
+                <?php 
+                $colors = ['bg-red-100 text-red-600', 'bg-purple-100 text-purple-600', 'bg-blue-100 text-blue-600', 'bg-green-100 text-green-600', 'bg-orange-100 text-orange-600'];
+                foreach ($ekskul as $index => $item): 
+                    $color = $colors[$index % count($colors)];
+                    $activities = explode(',', $item['konten']);
+                ?>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group/ekskul relative" data-aos="zoom-in" data-aos-delay="<?= $index * 100 ?>">
+                        <?php if($isAdmin): ?>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover/ekskul:opacity-100 flex gap-2 z-30 transition-opacity">
+                            <a href="<?= base_url('admin-konten/edit-item/'.$item['id']) ?>" class="bg-gray-100 text-indigo-600 shadow-sm p-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-colors">
+                                <i data-lucide="pencil" class="w-4 h-4"></i>
+                            </a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus kategori ekstrakurikuler?')" class="bg-gray-100 text-red-600 shadow-sm p-1.5 rounded-lg hover:bg-red-600 hover:text-white transition-colors">
+                                <i data-lucide="trash" class="w-4 h-4"></i>
+                            </a>
                         </div>
-                        <h3 class="text-xl mb-6 font-bold text-gray-900"><?= $item['category'] ?></h3>
+                        <?php endif; ?>
+                        
+                        <div class="w-16 h-16 <?= $color ?> rounded-2xl flex items-center justify-center mb-6 rotate-3 group-hover/ekskul:rotate-0 transition-transform duration-300">
+                            <i data-lucide="<?= esc($item['gambar_icon']) ?>" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl mb-6 font-bold text-gray-900"><?= esc($item['judul']) ?></h3>
                         <ul class="space-y-3">
-                            <?php foreach ($item['activities'] as $activity): ?>
+                            <?php foreach ($activities as $activity): ?>
+                                <?php if(trim($activity) !== ''): ?>
                                 <li class="flex items-center gap-3 text-gray-600 group/item">
                                     <div class="w-2 h-2 rounded-full border-2 border-blue-600 group-hover/item:bg-blue-600 transition-colors"></div>
-                                    <span class="group-hover/item:text-blue-600 transition-colors"><?= $activity ?></span>
+                                    <span class="group-hover/item:text-blue-600 transition-colors"><?= esc(trim($activity)) ?></span>
                                 </li>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </ul>
                     </div>
                 <?php endforeach; ?>
+                
+                <?php if($isAdmin): ?>
+                    <a href="<?= base_url('admin-konten/create-item/program/ekstrakurikuler') ?>" class="border-2 border-dashed border-gray-300 text-gray-500 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 w-full min-h-[250px] flex flex-col justify-center items-center rounded-2xl transition-all">
+                        <div class="w-16 h-16 bg-gray-100 group-hover:bg-blue-100 transition-colors duration-300 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="plus" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Tambah Ekskul</h3>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -153,6 +186,43 @@ $extracurricular = [
             </a>
         </div>
     </section>
+
+    <!-- Block Ekstra Custom Sections -->
+    <?php foreach($ekstra as $index => $e): ?>
+        <section class="py-24 bg-white relative group/section border-b border-gray-100">
+            <?php if($isAdmin): ?>
+            <div class="absolute top-8 right-8 z-20 flex gap-2">
+                <a href="<?= base_url('admin-konten/edit-item/'.$e['id']) ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-indigo-100 text-indigo-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm hover:bg-indigo-600 hover:text-white">
+                    <i data-lucide="pencil" class="w-4 h-4"></i> Edit
+                </a>
+                <a href="<?= base_url('admin-konten/delete-item/'.$e['id']) ?>" onclick="return confirm('Hapus bagian ekstra ini?')" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-red-100 text-red-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm hover:bg-red-600 hover:text-white">
+                    <i data-lucide="trash" class="w-4 h-4"></i> Hapus
+                </a>
+            </div>
+            <?php endif; ?>
+
+            <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"><?= esc($e['judul']) ?></h2>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+                </div>
+                <div class="max-w-4xl mx-auto prose prose-lg text-gray-600" data-aos="fade-up">
+                    <?= $e['konten'] ?>
+                </div>
+            </div>
+        </section>
+    <?php endforeach; ?>
+
+    <?php if($isAdmin): ?>
+    <div class="py-12 bg-gray-50 flex justify-center border-t border-gray-200 z-10 relative">
+        <a href="<?= base_url('admin-konten/create-item/program/ekstra') ?>" class="bg-white border-2 border-dashed border-gray-300 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-600 px-8 py-4 rounded-2xl font-bold flex flex-col items-center gap-2 transition-all group scale-95 hover:scale-100 shadow-sm">
+            <div class="w-10 h-10 bg-gray-100 text-gray-600 group-hover:bg-indigo-600 group-hover:text-white rounded-full flex items-center justify-center transition-colors">
+                <i data-lucide="plus" class="w-5 h-5"></i>
+            </div>
+            Tambah Bagian Extra Tersendiri
+        </a>
+    </div>
+    <?php endif; ?>
 </div>
 
 <?= $this->endSection() ?>

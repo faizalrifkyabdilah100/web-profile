@@ -2,94 +2,53 @@
 
 <?= $this->section('content') ?>
 
-<?php
-$features = [
-    [
-        'icon' => 'book-open',
-        'title' => 'Kurikulum Berkualitas',
-        'description' => 'Kurikulum nasional yang diperkaya dengan program pengembangan karakter dan keterampilan abad 21',
-    ],
-    [
-        'icon' => 'users',
-        'title' => 'Guru Profesional',
-        'description' => 'Tenaga pengajar berpengalaman dan berdedikasi tinggi untuk membimbing siswa mencapai prestasi terbaik',
-    ],
-    [
-        'icon' => 'trophy',
-        'title' => 'Prestasi Gemilang',
-        'description' => 'Berbagai prestasi akademik dan non-akademik di tingkat kota, provinsi, dan nasional',
-    ],
-    [
-        'icon' => 'target',
-        'title' => 'Fasilitas Lengkap',
-        'description' => 'Laboratorium, perpustakaan, dan fasilitas olahraga yang mendukung pembelajaran optimal',
-    ],
-];
 
-$stats = [
-    ['number' => '30+', 'label' => 'Tenaga Pendidik'],
-    ['number' => '1995', 'label' => 'Tahun Berdiri'],
-    ['number' => 'A', 'label' => 'Akreditasi'],
-    ['number' => 'Negeri', 'label' => 'Status Sekolah'],
-];
-
-$programs = [
-    [
-        'title' => 'Program Akademik',
-        'description' => 'Pembelajaran berkualitas dengan metode modern dan interaktif',
-        'image' => 'https://images.unsplash.com/photo-1589104760192-ccab0ce0d90f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRvbmVzaWFuJTIwc3R1ZGVudHMlMjBjbGFzc3Jvb20lMjBsZWFybmluZ3xlbnwxfHx8fDE3NzQ5Mzg4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    ],
-    [
-        'title' => 'Program Ekstrakurikuler',
-        'description' => 'Berbagai pilihan kegiatan untuk mengembangkan bakat dan minat siswa',
-        'image' => 'https://images.unsplash.com/photo-1760259904989-3c9b99ad49d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHNwb3J0cyUyMGZpZWxkfGVufDF8fHx8MTc3NDg2MjI1NXww&ixlib=rb-4.1.0&q=80&w=1080',
-    ],
-    [
-        'title' => 'Program Karakter',
-        'description' => 'Pembentukan karakter dan nilai-nilai moral yang kuat',
-        'image' => 'https://images.unsplash.com/photo-1632217138608-66217da0142f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBsaWJyYXJ5JTIwYm9va3N8ZW58MXx8fHwxNzc0OTE1ODY5fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    ],
-];
-
-$achievements = [
-    [
-        'title' => 'Juara 1 Olimpiade Matematika Tingkat Nasional',
-        'year' => '2025',
-    ],
-    [
-        'title' => 'Juara 2 Lomba Robotika Se-Jakarta',
-        'year' => '2025',
-    ],
-    [
-        'title' => 'Juara 1 Kompetisi Debat Bahasa Inggris',
-        'year' => '2024',
-    ],
-    [
-        'title' => 'Juara 3 Festival Seni Budaya Nasional',
-        'year' => '2024',
-    ],
-];
-
-$facilities = [
-    'Laboratorium IPA Modern',
-    'Laboratorium Komputer',
-    'Perpustakaan Digital',
-    'Ruang Multimedia',
-    'Lapangan Olahraga',
-    'Studio Musik',
-    'Aula Serbaguna',
-    'Masjid',
-];
-?>
 
 <div>
+    <!-- Flash Message -->
+    <?php if (session()->getFlashdata('pesan')): ?>
+        <div id="flash-message" class="fixed top-24 right-8 z-[100] max-w-sm w-full bg-white rounded-2xl shadow-2xl border-l-4 border-<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'green' : 'red' ?>-500 p-4 transform transition-all duration-500 translate-x-full">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'green' : 'red' ?>-50 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'check-circle' : 'alert-circle' ?>" class="w-5 h-5 text-<?= session()->getFlashdata('pesan')['type'] == 'success' ? 'green' : 'red' ?>-500"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900"><?= session()->getFlashdata('pesan')['type'] == 'success' ? 'Berhasil!' : 'Gagal!' ?></h4>
+                    <p class="text-sm text-gray-600 mt-1"><?= session()->getFlashdata('pesan')['message'] ?></p>
+                </div>
+                <button onclick="closeFlash()" class="ml-auto text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                setTimeout(() => { document.getElementById('flash-message').classList.remove('translate-x-full'); }, 100);
+                setTimeout(() => { closeFlash(); }, 5000);
+            });
+            function closeFlash() {
+                const el = document.getElementById('flash-message');
+                if(el) { el.classList.add('translate-x-full'); setTimeout(() => el.remove(), 500); }
+            }
+        </script>
+    <?php endif; ?>
+
     <!-- Hero Section -->
-    <section class="relative h-[600px] flex items-center justify-center overflow-hidden">
+    <section class="relative h-[600px] flex items-center justify-center overflow-hidden group/hero">
         <div class="absolute inset-0" data-aos="fade-in" data-aos-duration="1500">
-            <img src="https://images.unsplash.com/photo-1762088776943-28a9fbadcec4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBidWlsZGluZyUyMG1vZGVybiUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDkzODg4MHww&ixlib=rb-4.1.0&q=80&w=1080" 
+            <?php $heroPath = 'hero-bg.jpg'; $heroVer = file_exists(ROOTPATH . 'public/hero-bg.jpg') ? filemtime(ROOTPATH . 'public/hero-bg.jpg') : '1'; ?>
+            <img src="<?= file_exists(ROOTPATH . 'public/hero-bg.jpg') ? base_url($heroPath . '?v=' . $heroVer) : 'https://images.unsplash.com/photo-1762088776943-28a9fbadcec4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBidWlsZGluZyUyMG1vZGVybiUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDkzODg4MHww&ixlib=rb-4.1.0&q=80&w=1080' ?>" 
                  alt="School Building" class="w-full h-full object-cover transform scale-105" onerror="this.src='/fallback.jpg'">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-900/70"></div>
         </div>
+        
+        <?php if($isAdmin): ?>
+        <div class="absolute top-24 right-8 z-[50] opacity-0 group-hover/hero:opacity-100 transition-opacity duration-300">
+            <button onclick="document.getElementById('modal-hero').classList.remove('hidden')" class="bg-white/20 text-white backdrop-blur-md hover:bg-white/40 border border-white/30 px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-lg transition-colors">
+                <i data-lucide="camera" class="w-5 h-5"></i> Ubah Gambar Beranda
+            </button>
+        </div>
+        <?php endif; ?>
         
         <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-6xl mb-6 font-bold tracking-tight" data-aos="fade-down" data-aos-delay="200">
@@ -116,12 +75,30 @@ $facilities = [
     <section class="bg-gradient-to-r from-blue-700 to-blue-600 text-white py-16 relative z-20 shadow-2xl">
         <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <?php foreach ($stats as $index => $stat): ?>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="<?= $index * 100 ?>">
-                        <div class="text-4xl md:text-5xl mb-2 font-bold"><?= $stat['number'] ?></div>
-                        <div class="text-blue-100 font-medium"><?= $stat['label'] ?></div>
+                <?php foreach ($statistik as $index => $stat): ?>
+                    <div class="text-center group/stat relative border border-transparent hover:border-white/20 p-2 rounded-xl transition-all" data-aos="fade-up" data-aos-delay="<?= $index * 100 ?>">
+                        <?php if($isAdmin): ?>
+                        <div class="absolute -top-3 -right-3 opacity-0 group-hover/stat:opacity-100 flex gap-1 z-30 transition-opacity">
+                            <a href="<?= base_url('admin-konten/edit-item/'.$stat['id']) ?>" class="bg-indigo-500 text-white p-1.5 rounded-lg hover:bg-indigo-400">
+                                <i data-lucide="pencil" class="w-3 h-3"></i>
+                            </a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$stat['id']) ?>" onclick="return confirm('Hapus statistik?')" class="bg-red-500 text-white p-1.5 rounded-lg hover:bg-red-400">
+                                <i data-lucide="trash" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                        <div class="text-4xl md:text-5xl mb-2 font-bold"><?= esc($stat['konten']) ?></div>
+                        <div class="text-blue-100 font-medium"><?= esc($stat['judul']) ?></div>
                     </div>
                 <?php endforeach; ?>
+                <?php if($isAdmin): ?>
+                    <div class="text-center flex items-center justify-center">
+                        <a href="<?= base_url('admin-konten/create-item/beranda/statistik') ?>" class="border-2 border-dashed border-blue-400/50 hover:bg-white/10 hover:border-white w-full h-full min-h-[100px] flex flex-col justify-center items-center rounded-2xl transition-all text-white/50 hover:text-white">
+                            <i data-lucide="plus" class="w-8 h-8 mb-2"></i>
+                            <span class="text-sm font-semibold">Tambah Stat</span>
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -138,15 +115,35 @@ $facilities = [
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <?php foreach ($features as $index => $feature): ?>
-                    <div class="text-center p-8 rounded-2xl hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-blue-100 group bg-white hover:-translate-y-2" data-aos="fade-up" data-aos-delay="<?= $index * 150 ?>">
-                        <div class="w-20 h-20 bg-blue-50 group-hover:bg-blue-600 transition-colors duration-300 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 group-hover:rotate-0">
-                            <i data-lucide="<?= $feature['icon'] ?>" class="w-10 h-10 text-blue-600 group-hover:text-white transition-colors duration-300"></i>
+                <?php foreach ($fitur as $index => $f): ?>
+                    <div class="text-center p-8 rounded-2xl hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-blue-100 group/card bg-white hover:-translate-y-2 relative" data-aos="fade-up" data-aos-delay="<?= $index * 150 ?>">
+                        <?php if($isAdmin): ?>
+                        <div class="absolute top-3 right-3 opacity-0 group-hover/card:opacity-100 flex gap-1 z-30 transition-opacity">
+                            <a href="<?= base_url('admin-konten/edit-item/'.$f['id']) ?>" class="bg-indigo-100 text-indigo-700 p-2 rounded-lg hover:bg-indigo-600 hover:text-white transition-colors">
+                                <i data-lucide="pencil" class="w-4 h-4"></i>
+                            </a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$f['id']) ?>" onclick="return confirm('Hapus fitur unggulan?')" class="bg-red-100 text-red-700 p-2 rounded-lg hover:bg-red-600 hover:text-white transition-colors">
+                                <i data-lucide="trash" class="w-4 h-4"></i>
+                            </a>
                         </div>
-                        <h3 class="text-xl mb-3 font-bold text-gray-900"><?= $feature['title'] ?></h3>
-                        <p class="text-gray-600 leading-relaxed"><?= $feature['description'] ?></p>
+                        <?php endif; ?>
+                        
+                        <div class="w-20 h-20 bg-blue-50 group-hover/card:bg-blue-600 transition-colors duration-300 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 group-hover/card:rotate-0">
+                            <i data-lucide="<?= $f['gambar_icon'] ?>" class="w-10 h-10 text-blue-600 group-hover/card:text-white transition-colors duration-300"></i>
+                        </div>
+                        <h3 class="text-xl mb-3 font-bold text-gray-900"><?= esc($f['judul']) ?></h3>
+                        <p class="text-gray-600 leading-relaxed"><?= nl2br(esc($f['konten'])) ?></p>
                     </div>
                 <?php endforeach; ?>
+                
+                <?php if($isAdmin): ?>
+                    <a href="<?= base_url('admin-konten/create-item/beranda/fitur') ?>" class="text-center p-8 rounded-2xl border-2 border-dashed border-gray-300 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 group flex flex-col justify-center items-center min-h-[250px]">
+                        <div class="w-16 h-16 bg-gray-100 group-hover:bg-blue-100 transition-colors duration-300 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="plus" class="w-8 h-8 text-gray-400 group-hover:text-blue-600 transition-colors duration-300"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-400 group-hover:text-blue-600">Tambah Fitur</h3>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -167,24 +164,45 @@ $facilities = [
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <?php foreach ($programs as $index => $program): ?>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2" data-aos="zoom-in-up" data-aos-delay="<?= $index * 150 ?>">
+                <?php foreach ($program_utama as $index => $program): ?>
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group/card relative hover:-translate-y-2" data-aos="zoom-in-up" data-aos-delay="<?= $index * 150 ?>">
+                        <?php if($isAdmin): ?>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover/card:opacity-100 flex gap-2 z-30 transition-opacity">
+                            <a href="<?= base_url('admin-konten/edit-item/'.$program['id']) ?>" class="bg-white text-indigo-600 shadow-md p-2 rounded-xl hover:bg-indigo-600 hover:text-white transition-colors">
+                                <i data-lucide="pencil" class="w-4 h-4"></i>
+                            </a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$program['id']) ?>" onclick="return confirm('Hapus program unggulan?')" class="bg-white text-red-600 shadow-md p-2 rounded-xl hover:bg-red-600 hover:text-white transition-colors">
+                                <i data-lucide="trash" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                        
                         <div class="h-56 overflow-hidden relative">
-                            <img src="<?= $program['image'] ?>" alt="<?= $program['title'] ?>" 
-                                 class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                            <?php $src = str_starts_with($program['gambar_icon'] ?? '', 'http') ? $program['gambar_icon'] : base_url($program['gambar_icon']); ?>
+                            <img src="<?= esc($src) ?>" alt="<?= esc($program['judul']) ?>" 
+                                 class="w-full h-full object-cover transform transition-transform duration-700 group-hover/card:scale-110"
                                  onerror="this.src='/fallback.jpg'">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                         </div>
                         <div class="p-8">
-                            <h3 class="text-xl mb-3 font-bold text-gray-900"><?= $program['title'] ?></h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed"><?= $program['description'] ?></p>
-                            <a href="<?= base_url('program') ?>" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                            <h3 class="text-xl mb-3 font-bold text-gray-900"><?= esc($program['judul']) ?></h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed"><?= nl2br(esc($program['konten'])) ?></p>
+                            <a href="<?= base_url('program') ?>" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center gap-2 group-hover/card:gap-3 transition-all duration-300">
                                 Selengkapnya
                                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
+                
+                <?php if($isAdmin): ?>
+                    <a href="<?= base_url('admin-konten/create-item/beranda/program_unggulan') ?>" class="bg-white rounded-2xl overflow-hidden border-2 border-dashed border-gray-300 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 group flex flex-col justify-center items-center min-h-[350px]">
+                        <div class="w-20 h-20 bg-gray-100 group-hover:bg-blue-100 transition-colors duration-300 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="plus" class="w-10 h-10 text-gray-400 group-hover:text-blue-600 transition-colors duration-300"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-400 group-hover:text-blue-600">Tambah Program</h3>
+                    </a>
+                <?php endif; ?>
             </div>
 
             <!-- Tombol Lihat Semua Program -->
@@ -210,22 +228,42 @@ $facilities = [
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                <?php foreach ($achievements as $index => $achievement): ?>
-                    <div class="bg-gradient-to-r from-blue-50 to-white p-8 rounded-2xl border-l-4 border-blue-600 shadow-md hover:shadow-lg transition-shadow group" data-aos="fade-up" data-aos-delay="<?= $index * 100 ?>">
+                <?php foreach ($prestasi as $index => $pres): ?>
+                    <div class="bg-gradient-to-r from-blue-50 to-white p-8 rounded-2xl border-l-4 border-blue-600 shadow-md hover:shadow-lg transition-shadow group/pres relative" data-aos="fade-up" data-aos-delay="<?= $index * 100 ?>">
+                        <?php if($isAdmin): ?>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover/pres:opacity-100 flex gap-2 z-30 transition-opacity">
+                            <a href="<?= base_url('admin-konten/edit-item/'.$pres['id']) ?>" class="bg-white text-indigo-600 shadow-sm border border-gray-100 p-2 rounded-lg hover:bg-indigo-600 hover:text-white transition-colors">
+                                <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+                            </a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$pres['id']) ?>" onclick="return confirm('Hapus prestasi?')" class="bg-white text-red-600 shadow-sm border border-gray-100 p-2 rounded-lg hover:bg-red-600 hover:text-white transition-colors">
+                                <i data-lucide="trash" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                        
                         <div class="flex items-center gap-6">
-                            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 group-hover/pres:scale-110 transition-transform duration-300 shadow-md">
                                 <i data-lucide="trophy" class="w-8 h-8"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold mb-2 text-gray-900"><?= $achievement['title'] ?></h3>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900"><?= esc($pres['judul']) ?></h3>
                                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-blue-600 text-sm font-bold shadow-sm border border-blue-100">
                                     <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <?= $achievement['year'] ?>
+                                    <?= esc($pres['konten']) ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
+                
+                <?php if($isAdmin): ?>
+                    <div class="md:col-span-2 text-center mt-4">
+                        <a href="<?= base_url('admin-konten/create-item/beranda/prestasi') ?>" class="inline-flex items-center gap-2 border-2 border-dashed border-gray-300 text-gray-500 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 bg-white px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-sm">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                            Tambah Prestasi
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -243,11 +281,28 @@ $facilities = [
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <?php foreach ($facilities as $index => $facility): ?>
-                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
-                        <p class="font-medium text-lg"><?= $facility ?></p>
+                <?php foreach ($fasilitas as $index => $fas): ?>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:-translate-y-1 hover:shadow-xl group/fas relative" data-aos="fade-up" data-aos-delay="<?= $index * 50 ?>">
+                        <?php if($isAdmin): ?>
+                        <div class="absolute -top-3 -right-3 opacity-0 group-hover/fas:opacity-100 flex gap-1 z-30 transition-opacity">
+                            <a href="<?= base_url('admin-konten/edit-item/'.$fas['id']) ?>" class="bg-indigo-500 text-white p-1.5 rounded-lg hover:bg-indigo-400">
+                                <i data-lucide="pencil" class="w-3 h-3"></i>
+                            </a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$fas['id']) ?>" onclick="return confirm('Hapus fasilitas?')" class="bg-red-500 text-white p-1.5 rounded-lg hover:bg-red-400">
+                                <i data-lucide="trash" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                        <p class="font-medium text-lg"><?= esc($fas['konten']) ?></p>
                     </div>
                 <?php endforeach; ?>
+                
+                <?php if($isAdmin): ?>
+                    <a href="<?= base_url('admin-konten/create-item/beranda/fasilitas') ?>" class="rounded-2xl p-6 text-center transition-all duration-300 border-2 border-dashed border-white/30 hover:border-white hover:bg-white/10 flex items-center justify-center gap-2 text-white/70 hover:text-white">
+                        <i data-lucide="plus" class="w-5 h-5"></i>
+                        <span class="font-medium text-lg">Tambah</span>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -272,6 +327,73 @@ $facilities = [
             </a>
         </div>
     </section>
+
+    <!-- Block Ekstra Custom Sections -->
+    <?php foreach($ekstra as $index => $e): ?>
+        <section class="py-24 bg-white relative group/section border-b border-gray-100">
+            <?php if($isAdmin): ?>
+            <div class="absolute top-8 right-8 z-20 flex gap-2">
+                <a href="<?= base_url('admin-konten/edit-item/'.$e['id']) ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-indigo-100 text-indigo-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm hover:bg-indigo-600 hover:text-white">
+                    <i data-lucide="pencil" class="w-4 h-4"></i> Edit
+                </a>
+                <a href="<?= base_url('admin-konten/delete-item/'.$e['id']) ?>" onclick="return confirm('Hapus bagian ekstra ini?')" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-red-100 text-red-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm hover:bg-red-600 hover:text-white">
+                    <i data-lucide="trash" class="w-4 h-4"></i> Hapus
+                </a>
+            </div>
+            <?php endif; ?>
+
+            <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"><?= esc($e['judul']) ?></h2>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+                </div>
+                <div class="max-w-4xl mx-auto prose prose-lg text-gray-600" data-aos="fade-up">
+                    <?= $e['konten'] ?>
+                </div>
+            </div>
+        </section>
+    <?php endforeach; ?>
+
+    <?php if($isAdmin): ?>
+    <div class="py-12 bg-gray-50 flex justify-center border-t border-gray-200 z-10 relative">
+        <a href="<?= base_url('admin-konten/create-item/beranda/ekstra') ?>" class="bg-white border-2 border-dashed border-gray-300 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-600 px-8 py-4 rounded-2xl font-bold flex flex-col items-center gap-2 transition-all group scale-95 hover:scale-100 shadow-sm">
+            <div class="w-10 h-10 bg-gray-100 text-gray-600 group-hover:bg-indigo-600 group-hover:text-white rounded-full flex items-center justify-center transition-colors">
+                <i data-lucide="plus" class="w-5 h-5"></i>
+            </div>
+            Tambah Bagian Extra Tersendiri
+        </a>
+    </div>
+
+    <!-- Modal Form (Ubah Hero Beranda) -->
+    <div id="modal-hero" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('modal-hero').classList.add('hidden')"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <form action="<?= base_url('admin-konten/update_hero') ?>" method="POST" enctype="multipart/form-data" class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative z-10">
+                <?= csrf_field() ?>
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-2">
+                        <i data-lucide="image" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                <div class="text-center mb-6 border-b border-gray-100 pb-4">
+                    <h3 class="text-2xl font-bold text-gray-900">Ubah Gambar Latar</h3>
+                    <p class="text-gray-500 text-sm mt-1">Upload gambar pemandangan sekolah (Landscape/Horizontal)</p>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Pilih File Gambar</label>
+                        <input type="file" name="hero" accept="image/png, image/jpeg, image/jpg, image/webp" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition-all cursor-pointer" required>
+                        <p class="text-xs text-gray-500 mt-2">Format: JPG, PNG, WEBP. Maks 5MB.</p>
+                    </div>
+                </div>
+                <div class="mt-8 flex gap-3">
+                    <button type="button" class="flex-1 py-3 rounded-xl font-semibold bg-gray-100 hover:bg-gray-200" onclick="document.getElementById('modal-hero').classList.add('hidden')">Batal</button>
+                    <button type="submit" class="flex-1 py-3 rounded-xl font-semibold bg-indigo-600 hover:bg-indigo-700 text-white">Upload Gambar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <?php endif; ?>
 </div>
 
 <?= $this->endSection() ?>

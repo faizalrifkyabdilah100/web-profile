@@ -46,7 +46,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                     <div class="flex items-center gap-3 mb-4">
                         <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Identitas Sekolah</h2>
                         <?php if($isAdmin): ?>
-                            <a href="<?= base_url('tentang-admin/create-item/identitas') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg text-sm font-bold flex items-center gap-1 shadow-sm hover:bg-indigo-600 hover:text-white">
+                            <a href="<?= base_url('admin-konten/create-item/tentang/identitas') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg text-sm font-bold flex items-center gap-1 shadow-sm hover:bg-indigo-600 hover:text-white">
                                 <i data-lucide="plus" class="w-4 h-4"></i> Tambah Identitas
                             </a>
                         <?php endif; ?>
@@ -61,7 +61,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                                 <?php if($isAdmin): ?>
                                 <div class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-2">
                                     <a href="<?= base_url('tentang-admin/edit-item/'.$item['id']) ?>" class="p-1.5 text-amber-500 bg-amber-50 rounded shadow-sm hover:bg-amber-500 hover:text-white"><i data-lucide="pencil" class="w-4 h-4"></i></a>
-                                    <a href="<?= base_url('tentang-admin/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 bg-red-50 rounded shadow-sm hover:bg-red-500 hover:text-white"><i data-lucide="trash" class="w-4 h-4"></i></a>
+                                    <a href="<?= base_url('admin-konten/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 bg-red-50 rounded shadow-sm hover:bg-red-500 hover:text-white"><i data-lucide="trash" class="w-4 h-4"></i></a>
                                 </div>
                                 <?php endif; ?>
                             </div>
@@ -153,7 +153,7 @@ $isAdmin = session()->get('role') === 'super_admin';
         
         <?php if($isAdmin): ?>
         <div class="absolute top-8 right-8 z-20">
-            <a href="<?= base_url('tentang-admin/create-item/misi') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg hover:bg-blue-700">
+            <a href="<?= base_url('admin-konten/create-item/tentang/misi') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg hover:bg-blue-700">
                 <i data-lucide="plus" class="w-4 h-4"></i> Tambah Misi
             </a>
         </div>
@@ -179,7 +179,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                         <?php if($isAdmin): ?>
                         <div class="absolute right-4 top-4 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-1">
                             <a href="<?= base_url('tentang-admin/edit-item/'.$item['id']) ?>" class="p-1 text-amber-500 bg-amber-50 rounded hover:bg-amber-500 hover:text-white"><i data-lucide="pencil" class="w-4 h-4"></i></a>
-                            <a href="<?= base_url('tentang-admin/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1 text-red-500 bg-red-50 rounded hover:bg-red-500 hover:text-white"><i data-lucide="trash" class="w-4 h-4"></i></a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1 text-red-500 bg-red-50 rounded hover:bg-red-500 hover:text-white"><i data-lucide="trash" class="w-4 h-4"></i></a>
                         </div>
                         <?php endif; ?>
                     </div>
@@ -193,7 +193,7 @@ $isAdmin = session()->get('role') === 'super_admin';
         
         <?php if($isAdmin): ?>
         <div class="absolute top-8 right-8 z-20">
-            <a href="<?= base_url('tentang-admin/create-item/tujuan') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg hover:bg-indigo-700">
+            <a href="<?= base_url('admin-konten/create-item/tentang/tujuan') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg hover:bg-indigo-700">
                 <i data-lucide="plus" class="w-4 h-4"></i> Tambah Tujuan
             </a>
         </div>
@@ -216,7 +216,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                         <?php if($isAdmin): ?>
                         <div class="absolute bottom-4 right-4 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-1 z-20 bg-white/80 p-1 rounded-lg backdrop-blur-sm">
                             <a href="<?= base_url('tentang-admin/edit-item/'.$item['id']) ?>" class="p-1.5 text-amber-500 hover:bg-amber-100 rounded focus:outline-none"><i data-lucide="pencil" class="w-4 h-4"></i></a>
-                            <a href="<?= base_url('tentang-admin/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 hover:bg-red-100 rounded focus:outline-none"><i data-lucide="trash" class="w-4 h-4"></i></a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 hover:bg-red-100 rounded focus:outline-none"><i data-lucide="trash" class="w-4 h-4"></i></a>
                         </div>
                         <?php endif; ?>
 
@@ -236,7 +236,7 @@ $isAdmin = session()->get('role') === 'super_admin';
     <section class="py-24 bg-slate-50 relative group/section">
         <?php if($isAdmin): ?>
         <div class="absolute top-8 right-8 z-20">
-            <a href="<?= base_url('tentang-admin/create-item/nilai') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg hover:bg-blue-700">
+            <a href="<?= base_url('admin-konten/create-item/tentang/nilai') ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg hover:bg-blue-700">
                 <i data-lucide="plus" class="w-4 h-4"></i> Tambah Nilai
             </a>
         </div>
@@ -258,7 +258,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                         <?php if($isAdmin): ?>
                         <div class="absolute top-2 right-2 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-1 z-20">
                             <a href="<?= base_url('tentang-admin/edit-item/'.$value['id']) ?>" class="p-1.5 text-amber-500 bg-amber-50 hover:bg-amber-100 rounded focus:outline-none"><i data-lucide="pencil" class="w-4 h-4"></i></a>
-                            <a href="<?= base_url('tentang-admin/delete-item/'.$value['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 bg-red-50 hover:bg-red-100 rounded focus:outline-none"><i data-lucide="trash" class="w-4 h-4"></i></a>
+                            <a href="<?= base_url('admin-konten/delete-item/'.$value['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 bg-red-50 hover:bg-red-100 rounded focus:outline-none"><i data-lucide="trash" class="w-4 h-4"></i></a>
                         </div>
                         <?php endif; ?>
 
@@ -273,12 +273,49 @@ $isAdmin = session()->get('role') === 'super_admin';
         </div>
     </section>
 
+    <!-- Block Ekstra Custom Sections -->
+    <?php foreach($ekstra as $index => $e): ?>
+        <section class="py-24 bg-white relative group/section border-b border-gray-100">
+            <?php if($isAdmin): ?>
+            <div class="absolute top-8 right-8 z-20 flex gap-2">
+                <a href="<?= base_url('admin-konten/edit-item/'.$e['id']) ?>" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-indigo-100 text-indigo-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm hover:bg-indigo-600 hover:text-white">
+                    <i data-lucide="pencil" class="w-4 h-4"></i> Edit
+                </a>
+                <a href="<?= base_url('admin-konten/delete-item/'.$e['id']) ?>" onclick="return confirm('Hapus bagian ekstra ini?')" class="opacity-0 group-hover/section:opacity-100 transition-opacity bg-red-100 text-red-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm hover:bg-red-600 hover:text-white">
+                    <i data-lucide="trash" class="w-4 h-4"></i> Hapus
+                </a>
+            </div>
+            <?php endif; ?>
+
+            <div class="mx-auto max-w-[1400px] w-full px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"><?= esc($e['judul']) ?></h2>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+                </div>
+                <div class="max-w-4xl mx-auto prose prose-lg text-gray-600" data-aos="fade-up">
+                    <?= $e['konten'] ?>
+                </div>
+            </div>
+        </section>
+    <?php endforeach; ?>
+
+    <?php if($isAdmin): ?>
+    <div class="py-12 bg-gray-50 flex justify-center border-t border-gray-200 z-10 relative">
+        <a href="<?= base_url('admin-konten/create-item/tentang/ekstra') ?>" class="bg-white border-2 border-dashed border-gray-300 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-600 px-8 py-4 rounded-2xl font-bold flex flex-col items-center gap-2 transition-all group scale-95 hover:scale-100 shadow-sm">
+            <div class="w-10 h-10 bg-gray-100 text-gray-600 group-hover:bg-indigo-600 group-hover:text-white rounded-full flex items-center justify-center transition-colors">
+                <i data-lucide="plus" class="w-5 h-5"></i>
+            </div>
+            Tambah Bagian Extra Tersendiri
+        </a>
+    </div>
+    <?php endif; ?>
+
     <!-- Modal Form (Profil & Visi) -->
     <?php if($isAdmin): ?>
     <div id="modal-profil" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('modal-profil').classList.add('hidden')"></div>
         <div class="flex items-center justify-center min-h-screen p-4">
-            <form action="<?= base_url('tentang-admin/update_utama') ?>" method="POST" class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-8 relative z-10">
+            <form action="<?= base_url('admin-konten/update_utama') ?>" method="POST" class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-8 relative z-10">
                 <?= csrf_field() ?>
                 <input type="hidden" name="id_profil" value="<?= $profil['id'] ?>">
                 <input type="hidden" name="id_visi" value="<?= $visi['id'] ?>">
@@ -303,7 +340,7 @@ $isAdmin = session()->get('role') === 'super_admin';
     <div id="modal-visi" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('modal-visi').classList.add('hidden')"></div>
         <div class="flex items-center justify-center min-h-screen p-4">
-            <form action="<?= base_url('tentang-admin/update_utama') ?>" method="POST" class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-8 relative z-10">
+            <form action="<?= base_url('admin-konten/update_utama') ?>" method="POST" class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-8 relative z-10">
                 <?= csrf_field() ?>
                 <input type="hidden" name="id_profil" value="<?= $profil['id'] ?>">
                 <input type="hidden" name="id_visi" value="<?= $visi['id'] ?>">
@@ -329,7 +366,7 @@ $isAdmin = session()->get('role') === 'super_admin';
     <div id="modal-logo" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="document.getElementById('modal-logo').classList.add('hidden')"></div>
         <div class="flex items-center justify-center min-h-screen p-4">
-            <form action="<?= base_url('tentang-admin/update_logo') ?>" method="POST" enctype="multipart/form-data" class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative z-10">
+            <form action="<?= base_url('admin-konten/update_logo') ?>" method="POST" enctype="multipart/form-data" class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative z-10">
                 <?= csrf_field() ?>
                 <div class="flex items-center justify-center mb-6">
                     <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-2">

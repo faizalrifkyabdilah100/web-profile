@@ -38,11 +38,7 @@ $navigation = [
     ],
 ];
 
-// Tambahkan Manajemen Konten hanya untuk super_admin
-if (session()->get('role') === 'super_admin') {
-    $navigation[3]['children'][] = ['name' => 'Setting Tentang', 'href' => base_url('tentang-admin')];
-    $navigation[3]['children'][] = ['name' => 'Konten Ekstra', 'href' => base_url('halaman-dinamis')];
-}
+
 
 // Helper to determine active state
 function isActivePath($href, $currentUri) {
