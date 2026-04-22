@@ -111,6 +111,11 @@ class AdminKonten extends BaseController
             $rules['judul'] = 'required';
         }
 
+        if (!$this->validate($rules)) {
+            session()->setFlashdata('validation', \Config\Services::validation());
+            return redirect()->back()->withInput();
+        }
+
         // Proses gambar icon
         $gambarIcon = $this->request->getPost('gambar_icon'); // Ini untuk fitur, nilai, ekstrakurikuler
         if (in_array($kategori, ['program_unggulan', 'akademik'])) {
@@ -177,6 +182,11 @@ class AdminKonten extends BaseController
         $rules = ['konten' => 'required'];
         if (in_array($kategori, ['identitas', 'nilai', 'fitur', 'statistik', 'prestasi', 'program_unggulan', 'akademik', 'ekstrakurikuler', 'ekstra'])) {
             $rules['judul'] = 'required';
+        }
+
+        if (!$this->validate($rules)) {
+            session()->setFlashdata('validation', \Config\Services::validation());
+            return redirect()->back()->withInput();
         }
 
         // Proses gambar icon

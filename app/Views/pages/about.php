@@ -60,7 +60,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                                 
                                 <?php if($isAdmin): ?>
                                 <div class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-2">
-                                    <a href="<?= base_url('tentang-admin/edit-item/'.$item['id']) ?>" class="p-1.5 text-amber-500 bg-amber-50 rounded shadow-sm hover:bg-amber-500 hover:text-white"><i data-lucide="pencil" class="w-4 h-4"></i></a>
+                                    <a href="<?= base_url('admin-konten/edit-item/'.$item['id']) ?>" class="p-1.5 text-amber-500 bg-amber-50 rounded shadow-sm hover:bg-amber-500 hover:text-white"><i data-lucide="pencil" class="w-4 h-4"></i></a>
                                     <a href="<?= base_url('admin-konten/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 bg-red-50 rounded shadow-sm hover:bg-red-500 hover:text-white"><i data-lucide="trash" class="w-4 h-4"></i></a>
                                 </div>
                                 <?php endif; ?>
@@ -178,7 +178,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                         
                         <?php if($isAdmin): ?>
                         <div class="absolute right-4 top-4 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-1">
-                            <a href="<?= base_url('tentang-admin/edit-item/'.$item['id']) ?>" class="p-1 text-amber-500 bg-amber-50 rounded hover:bg-amber-500 hover:text-white"><i data-lucide="pencil" class="w-4 h-4"></i></a>
+                            <a href="<?= base_url('admin-konten/edit-item/'.$item['id']) ?>" class="p-1 text-amber-500 bg-amber-50 rounded hover:bg-amber-500 hover:text-white"><i data-lucide="pencil" class="w-4 h-4"></i></a>
                             <a href="<?= base_url('admin-konten/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1 text-red-500 bg-red-50 rounded hover:bg-red-500 hover:text-white"><i data-lucide="trash" class="w-4 h-4"></i></a>
                         </div>
                         <?php endif; ?>
@@ -215,7 +215,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                         
                         <?php if($isAdmin): ?>
                         <div class="absolute bottom-4 right-4 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-1 z-20 bg-white/80 p-1 rounded-lg backdrop-blur-sm">
-                            <a href="<?= base_url('tentang-admin/edit-item/'.$item['id']) ?>" class="p-1.5 text-amber-500 hover:bg-amber-100 rounded focus:outline-none"><i data-lucide="pencil" class="w-4 h-4"></i></a>
+                            <a href="<?= base_url('admin-konten/edit-item/'.$item['id']) ?>" class="p-1.5 text-amber-500 hover:bg-amber-100 rounded focus:outline-none"><i data-lucide="pencil" class="w-4 h-4"></i></a>
                             <a href="<?= base_url('admin-konten/delete-item/'.$item['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 hover:bg-red-100 rounded focus:outline-none"><i data-lucide="trash" class="w-4 h-4"></i></a>
                         </div>
                         <?php endif; ?>
@@ -257,7 +257,7 @@ $isAdmin = session()->get('role') === 'super_admin';
                         
                         <?php if($isAdmin): ?>
                         <div class="absolute top-2 right-2 opacity-0 group-hover/item:opacity-100 transition-opacity flex gap-1 z-20">
-                            <a href="<?= base_url('tentang-admin/edit-item/'.$value['id']) ?>" class="p-1.5 text-amber-500 bg-amber-50 hover:bg-amber-100 rounded focus:outline-none"><i data-lucide="pencil" class="w-4 h-4"></i></a>
+                            <a href="<?= base_url('admin-konten/edit-item/'.$value['id']) ?>" class="p-1.5 text-amber-500 bg-amber-50 hover:bg-amber-100 rounded focus:outline-none"><i data-lucide="pencil" class="w-4 h-4"></i></a>
                             <a href="<?= base_url('admin-konten/delete-item/'.$value['id']) ?>" onclick="return confirm('Hapus ini?')" class="p-1.5 text-red-500 bg-red-50 hover:bg-red-100 rounded focus:outline-none"><i data-lucide="trash" class="w-4 h-4"></i></a>
                         </div>
                         <?php endif; ?>
